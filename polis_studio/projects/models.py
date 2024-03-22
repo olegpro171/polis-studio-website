@@ -34,6 +34,9 @@ class Project(models.Model):
         verbose_name='Description',
     )
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Image(models.Model):
     file = models.ImageField(
@@ -64,6 +67,9 @@ class Image(models.Model):
         related_name='images',
         verbose_name='Project',
     )
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class Bluprint(models.Model):
@@ -96,6 +102,9 @@ class Bluprint(models.Model):
         verbose_name='Project',
     )
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class ProjectCard(models.Model):
     project = models.ForeignKey(
@@ -109,3 +118,6 @@ class ProjectCard(models.Model):
         upload_to='projects/card_titles/',
         verbose_name='Title image',
     )
+
+    def __str__(self) -> str:
+        return 'Card: ' + self.project.name
